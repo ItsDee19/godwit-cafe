@@ -3,31 +3,36 @@
 /*
   SmoothScroll
   ---------------------------------------------------------------
-  Wraps the app in Lenis (buttered smooth scrolling) and exposes a
-  ref-based scroll-progress context. The 3D hero reads progress.current
-  inside its render loop (useFrame) — no React re-renders per frame.
+  Lenis (buttered smooth scroll) + GSAP ScrollTrigger sharing ONE clock:
+  Lenis' RAF is driven by gsap.ticker (autoRaf disabled), and ScrollTrigger
+  is updated on every Lenis scroll. This keeps 3D choreography (motion
+  useScroll), 2D reveals (ScrollTrigger), and the page scroll perfectly
+  in lockstep — no jitter, one scroll source.
 
-  NOTE (Lenis + GSAP): when GSAP ScrollTrigger reveals are added, we
-  switch ReactLenis to `autoRaf={false}` and drive lenis.raf() from
-  gsap.ticker so both share one clock. For now Lenis runs its own RAF.
+  Also exposes a ref-based scroll-progress context the 3D hero reads inside
+  its render loop (no React re-renders per frame).
 */
 
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis, useLenis, type LenisRef } from "lenis/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   createContext,
   useContext,
+  useEffect,
   useRef,
   type ReactNode,
 } from "react";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 type Holder<T> = { current: T };
 
 export interface ScrollState {
-  /** 0 → 1 progress through the whole scrollable page */
   progress: Holder<number>;
-  /** current scroll velocity (px/frame-ish), signed */
   velocity: Holder<number>;
-  /** 1 = scrolling down, -1 = up, 0 = idle */
   direction: Holder<number>;
 }
 
@@ -46,6 +51,7 @@ function ScrollReporter({ state }: { state: ScrollState }) {
     state.progress.current = lenis.progress ?? 0;
     state.velocity.current = lenis.velocity ?? 0;
     state.direction.current = lenis.direction ?? 0;
+    ScrollTrigger.update();
   });
   return null;
 }
@@ -56,17 +62,31 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     velocity: { current: 0 },
     direction: { current: 0 },
   }).current;
+  const lenisRef = useRef<LenisRef>(null);
+
+  useEffect(() => {
+    function update(time: number) {
+      lenisRef.current?.lenis?.raf(time * 1000);
+    }
+    gsap.ticker.add(update);
+    gsap.ticker.lagSmoothing(0);
+    return () => {
+      gsap.ticker.remove(update);
+    };
+  }, []);
 
   return (
     <ScrollProgressContext.Provider value={state}>
       <ReactLenis
         root
+        ref={lenisRef}
+        autoRaf={false}
         options={{
           lerp: 0.1,
           smoothWheel: true,
           wheelMultiplier: 1,
           touchMultiplier: 1.5,
-          // Use native touch scrolling on mobile — never fights vertical scroll.
+          // Native touch scrolling on mobile — never fights vertical scroll.
           syncTouch: false,
         }}
       >
