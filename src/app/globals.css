@@ -1,26 +1,195 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  GODWIT CAFE — design tokens
+  ---------------------------------------------------------------
+  Color tokens are defined as raw CSS variables in :root (the base
+  brand / home theme) and overridden per outlet via [data-theme="..."].
+  They are exposed to Tailwind utilities through `@theme inline` so the
+  utilities (bg-paper, text-ink, bg-accent, ...) resolve to the live
+  variable and therefore re-theme at runtime when data-theme changes.
+
+  JS-side mirrors of the accent colors (for the 3D canvas / GSAP) live
+  in src/lib/themes.ts — keep the two in sync.
+*/
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-2: var(--accent-2);
+  --color-halo: var(--halo);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+  --shadow-soft: 0 1px 2px rgb(28 22 17 / 0.04), 0 8px 24px rgb(28 22 17 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(28 22 17 / 0.05), 0 18px 50px rgb(28 22 17 / 0.12);
+  --ease-godwit: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-godwit-in: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+/* ---------------------------------------------------------------
+   Base brand theme (home / default)  — espresso + cream + amber
+--------------------------------------------------------------- */
+:root {
+  --paper: #faf4e9;
+  --surface: #fffdf8;
+  --ink: #1c1611;
+  --ink-soft: #6b6157;
+  --line: #eadfcc;
+  --accent: #e0a100;
+  --accent-ink: #1c1611;
+  --accent-2: #3a2a1e;
+  --halo: #f5e3c2;
+}
+
+/* Indore — flagship / origin: deep espresso + cream + golden-amber */
+[data-theme="indore"] {
+  --paper: #f7efe2;
+  --surface: #fffdf9;
+  --ink: #20160f;
+  --ink-soft: #6e6256;
+  --line: #e6d8c3;
+  --accent: #d98a04;
+  --accent-ink: #20160f;
+  --accent-2: #4a2e1a;
+  --halo: #f3ddb6;
+}
+
+/* Raipur — explorer's table: teal/emerald + terracotta */
+[data-theme="raipur"] {
+  --paper: #f1f0e8;
+  --surface: #fbfcfa;
+  --ink: #15211d;
+  --ink-soft: #5c6661;
+  --line: #d8e0da;
+  --accent: #0c6f60;
+  --accent-ink: #ffffff;
+  --accent-2: #c0552f;
+  --halo: #cfe6dd;
+}
+
+/* Nagpur — new arrival: blush/peach + sage + vibrant pop */
+[data-theme="nagpur"] {
+  --paper: #fbf0ec;
+  --surface: #fffcfa;
+  --ink: #2a1a20;
+  --ink-soft: #7a6a6f;
+  --line: #f0ddd6;
+  --accent: #ec3f63;
+  --accent-ink: #ffffff;
+  --accent-2: #7e9b6b;
+  --halo: #fbd9ce;
+}
+
+/* ---------------------------------------------------------------
+   Base layer
+--------------------------------------------------------------- */
+@layer base {
+  html {
+    /* Lenis drives smooth scroll; keep native smooth off to avoid conflicts */
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-synthesis-weight: none;
+    transition: background-color 0.6s var(--ease-godwit), color 0.6s var(--ease-godwit);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------
+   Utilities / helpers
+--------------------------------------------------------------- */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* hide scrollbars on horizontal review/menu rails while keeping scroll */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* full-bleed grain/vignette helper for premium feel (optional) */
+  .bg-grain {
+    background-image: radial-gradient(
+      rgb(28 22 17 / 0.035) 1px,
+      transparent 1px
+    );
+    background-size: 4px 4px;
+  }
+  /* infinite marquee — track holds two identical copies, slides -50% */
+  .animate-marquee {
+    animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+  }
+}
+
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Reduced motion: neutralise transitions/animations globally.
+   The 3D hero swaps to a static fallback in React; this covers CSS.
+--------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
