@@ -93,7 +93,7 @@ function CityCard({
       className="group relative block overflow-hidden rounded-3xl border border-line bg-paper p-6 shadow-soft transition-[transform,box-shadow,border-color] duration-500 ease-[var(--ease-godwit)] hover:-translate-y-1.5 hover:border-accent/60 hover:shadow-lift"
     >
       {/* accent top rule grows on hover */}
-      <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent transition-transform duration-500 group-hover:scale-x-100" />
+      <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent-bright transition-transform duration-500 group-hover:scale-x-100" />
 
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">

@@ -58,6 +58,8 @@ export default function HeroCanvas({
 
   return (
     <div
+      role="img"
+      aria-label="Interactive 3D donut — drag to spin"
       className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
       onPointerDown={onDown}
       onPointerMove={onMove}

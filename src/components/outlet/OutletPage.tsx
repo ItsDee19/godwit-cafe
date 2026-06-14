@@ -5,6 +5,8 @@ import { Gallery } from "./Gallery";
 import { ReviewsModule } from "@/components/reviews/ReviewsModule";
 import { MapHours } from "./MapHours";
 import { OrderCTAs } from "./OrderCTAs";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { restaurantJsonLd } from "@/lib/seo";
 import type { Outlet } from "@/lib/outlets";
 import type { PlaceData } from "@/lib/places";
 
@@ -22,6 +24,7 @@ export function OutletPage({
 }) {
   return (
     <>
+      <JsonLd data={restaurantJsonLd(outlet, place)} />
       <OutletHero outlet={outlet} place={place} />
       <Vibe outlet={outlet} />
       <SignatureDishes outlet={outlet} />

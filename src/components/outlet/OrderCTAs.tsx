@@ -12,7 +12,7 @@ export function OrderCTAs({ outlet }: { outlet: Outlet }) {
           <PureVegBadge className="text-surface/70" />
           <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-balance sm:text-5xl">
             Hungry in {outlet.city}?{" "}
-            <span className="italic text-accent">Let&apos;s feed the wander.</span>
+            <span className="italic text-accent-bright">Let&apos;s feed the wander.</span>
           </h2>
           <p className="max-w-xl text-surface/65 text-pretty">
             Reserve a table or order in through your favourite platform. Pure

@@ -5,6 +5,8 @@ import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/nav/Footer";
 import { ThemeController } from "@/components/ui/ThemeController";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { brandJsonLd } from "@/lib/seo";
 
 // Runs before paint so outlet routes theme without a flash. Client-side
 // navigations are then kept in sync by <ThemeController>.
@@ -71,6 +73,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <JsonLd data={brandJsonLd()} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-surface"

@@ -8,7 +8,7 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-[transform,background-color,color,box-shadow] duration-300 ease-[var(--ease-godwit)] will-change-transform active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-accent text-accent-ink shadow-soft hover:shadow-lift hover:-translate-y-0.5",
+  primary: "bg-accent-bright text-accent-ink shadow-soft hover:shadow-lift hover:-translate-y-0.5",
   "solid-ink": "bg-ink text-surface hover:-translate-y-0.5 hover:shadow-lift",
   outline: "border border-ink/20 text-ink hover:bg-ink hover:text-surface",
   ghost: "text-ink hover:bg-ink/5",
