@@ -57,9 +57,8 @@ These are wired with placeholders/fallbacks so the build runs today. Replace as 
 
 ### Confirmed business data (`src/lib/outlets.ts`, marked `// TODO: confirm`)
 - [ ] Exact **addresses** (some outlets have conflicting / multiple listings)
-- [ ] Exact **opening hours** per outlet
-- [ ] **Phone** for Raipur (currently unknown)
-- [ ] Exact **lat/lng** per outlet (used for map + LocalBusiness JSON-LD)
+- [ ] Exact **opening hours** per outlet (Raipur seeded as 11:00–23:00, confirm)
+- [ ] Exact **lat/lng** per outlet (Raipur seeded to Pandri/Govind Nagar approx; used for map + JSON-LD)
 
 ### Brand & media assets
 - [ ] Brand **logo** (drop into `/public/brand/`, then wire into `BirdMark`/nav)

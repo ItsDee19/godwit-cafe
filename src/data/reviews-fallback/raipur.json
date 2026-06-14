@@ -1,37 +1,37 @@
 {
   "_note": "FALLBACK DATA — researched snapshot, not live. Replace at runtime via Google Places API (New) once GOOGLE_PLACES_API_KEY + place_id are set. See src/lib/places.ts.",
-  "rating": 4.3,
-  "totalRatings": 1876,
+  "rating": 4.4,
+  "totalRatings": 680,
   "reviews": [
     {
       "author": "Ananya Sahu",
       "rating": 5,
-      "relativeTime": "3 weeks ago",
-      "text": "Mesmerising ambiance inside Magneto Mall. The Mr. Mateos arancini and Burmese khow suey are must-tries. Staff happily suggested the right dishes."
+      "relativeTime": "2 weeks ago",
+      "text": "Lovely all-day spot on Kanki Highstreet, right by Shoppers Stop. The arancini and Burmese khow suey are must-tries, and the coffee is genuinely good. Staff happily suggested the right dishes."
     },
     {
       "author": "Vikram Patel",
       "rating": 4,
       "relativeTime": "a month ago",
-      "text": "Spacious, family-friendly and great for a fusion dinner. KungFu rolls were delicious. A touch on the pricey side but the experience makes up for it."
+      "text": "Warm, modern room and great for a work lunch in Pandri. KungFu rolls were delicious and the tea cakes are perfect with a coffee."
     },
     {
       "author": "Megha Agrawal",
       "rating": 5,
       "relativeTime": "a month ago",
-      "text": "Loved the mocktails — cranberry virgin sangria is so refreshing. Oriental and continental options are all pure veg, which is rare and wonderful."
+      "text": "Pure veg with Jain options on request, which is rare and wonderful. Oriental and continental dishes were all spot on. The Belgian chocolate jar is dangerously good."
     },
     {
       "author": "Sahil Dewangan",
       "rating": 4,
       "relativeTime": "2 months ago",
-      "text": "Good portion sizes and a lovely setting for a weekend outing with family. Paneer tikka and hummus platter were both very good."
+      "text": "Easy to find beside Shoppers Stop. Good portions, a fresh bakery counter and a friendly team. Hummus platter and cookies were both very good."
     },
     {
       "author": "Ishita Rao",
       "rating": 4,
       "relativeTime": "3 months ago",
-      "text": "Came expecting Indore quality and mostly got it. Black rice was excellent. Service was prompt and friendly throughout."
+      "text": "Came expecting Indore quality and mostly got it. Comfortable for meetings and a long catch-up. Service was prompt and friendly throughout."
     }
   ]
 }

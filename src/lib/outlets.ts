@@ -162,17 +162,23 @@ export const outlets: Record<OutletId, Outlet> = {
     positioning: "The Explorer's Table",
     tagline: "Originally from Indore. Now wandering Raipur.",
     about:
-      "A passport on a plate. Tucked inside Magneto The Mall, Godwit Raipur leans into the fusion adventure — oriental, continental and Indian sharing one spacious, family-friendly room. Come for the mesmerising ambience and a staff that happily steers you to the good stuff.",
-    // TODO: confirm — Opp. PVR / Tatibandh also referenced
+      "An all-day pure-veg diner on Kanki Highstreet, right beside Shoppers Stop in Pandri. Godwit Raipur plates global comfort food — oriental, continental and Indian — alongside fresh coffee, cookies and tea cakes, in a warm modern room that suits a work lunch, a celebration, or a long, lazy catch-up. Jain options on request.",
     address:
-      "Second Floor, Magneto The Mall, Labhandi, GE Road, Shankar Nagar, Raipur, Chhattisgarh 492001",
-    area: "Magneto The Mall, GE Road",
-    phone: "", // TODO: confirm outlet phone
-    hours: "12:00 PM – 1:00 AM", // TODO: verify
+      "Ward No 24, Kanki Highstreet, PH No 109, beside Shoppers Stop, Pandri Tarai, Govind Nagar, Raipur, Chhattisgarh 492004",
+    area: "Kanki Highstreet, beside Shoppers Stop",
+    phone: "+91 92946 10000",
+    hours: "11:00 AM – 11:00 PM", // TODO: confirm
     mapsPlaceId: "", // TODO: place_id
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Godwit+Cafe+Raipur",
-    geo: { lat: 21.2333, lng: 81.6296 }, // TODO: confirm exact
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=Godwit+Cafe+Kanki+Highstreet+Pandri+Raipur",
+    geo: { lat: 21.2497, lng: 81.6586 }, // TODO: confirm exact (Pandri / Govind Nagar)
     signatureDishes: [
+      {
+        name: "Signature Coffee",
+        tag: "Cafe",
+        blurb: "Slow-pulled and full-bodied — the heart of an all-day cafe.",
+        photo: { alt: "Cup of Godwit signature coffee" },
+      },
       {
         name: "Mr. Mateos Arancini",
         tag: "Signature",
@@ -181,10 +187,10 @@ export const outlets: Record<OutletId, Outlet> = {
         photo: { alt: "Risotto arancini with pomodoro sauce" },
       },
       {
-        name: "Spicy Indian Sizzler",
-        tag: "Most loved",
-        blurb: "A bold, smoke-rising sizzler tuned to a desi palate.",
-        photo: { alt: "Spicy Indian vegetarian sizzler" },
+        name: "Burmese Khow Suey",
+        tag: "Chef's pick",
+        blurb: "Coconut-rich noodle bowl with a table of crunchy condiments.",
+        photo: { alt: "Burmese khow suey noodle bowl with condiments" },
       },
       {
         name: "KungFu Rolls",
@@ -192,39 +198,33 @@ export const outlets: Record<OutletId, Outlet> = {
         photo: { alt: "Indo-Chinese KungFu rolls" },
       },
       {
-        name: "Burmese Khow Suey",
-        tag: "Chef's pick",
-        blurb: "Coconut-rich noodle bowl with a table of crunchy condiments.",
-        photo: { alt: "Burmese khow suey noodle bowl with condiments" },
-      },
-      {
         name: "Hummus Platter",
         blurb: "Silky hummus, warm pita, olives and crudités — mezze done right.",
         photo: { alt: "Hummus mezze platter with pita" },
       },
       {
-        name: "Paneer Tikka",
-        blurb: "Clay-oven paneer, charred at the edges, smoky and soft.",
-        photo: { alt: "Char-grilled paneer tikka skewers" },
+        name: "Tea Cakes",
+        tag: "Bakery",
+        blurb: "Soft, buttery loaf cakes baked fresh for chai o'clock.",
+        photo: { alt: "Assorted fresh-baked tea cakes" },
       },
       {
-        name: "Cranberry Virgin Sangria",
-        tag: "Mocktail",
-        blurb: "Bright, fruit-forward and zero-proof — the explorer's refresher.",
-        photo: { alt: "Cranberry virgin sangria mocktail" },
+        name: "Fresh-Baked Cookies",
+        tag: "Bakery",
+        blurb: "Warm, chunky cookies straight from the oven.",
+        photo: { alt: "Fresh-baked cookies on a tray" },
       },
       {
-        name: "Virgin Jägerbomb",
-        tag: "Mocktail",
-        blurb: "A theatrical, fizzy zero-proof pour with a kick of fun.",
-        photo: { alt: "Virgin jagerbomb mocktail" },
+        name: "Belgian Chocolate Jar",
+        blurb: "Layered dark-chocolate dessert in a jar, deeply indulgent.",
+        photo: { alt: "Belgian chocolate dessert jar" },
       },
     ],
     gallery: [
-      { alt: "Godwit Raipur — spacious mall-floor seating" },
-      { alt: "Godwit Raipur — ambient lighting and greenery" },
-      { alt: "Godwit Raipur — fusion plating" },
-      { alt: "Godwit Raipur — mocktails on the table" },
+      { alt: "Godwit Raipur — Kanki Highstreet cafe interior" },
+      { alt: "Godwit Raipur — warm all-day diner seating" },
+      { alt: "Godwit Raipur — fresh coffee and bakery counter" },
+      { alt: "Godwit Raipur — global comfort plating" },
     ],
     orderLinks: orderLinks(),
     instagram: INSTAGRAM,
