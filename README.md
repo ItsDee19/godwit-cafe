@@ -103,6 +103,15 @@ public/           images/ · models/ · og/ · brand/
   `--accent-bright`; skip-link, focus-visible rings, alt text, labelled controls.
 - Run Lighthouse against the Vercel preview for the live mobile score (target ≥ 85).
 
+## Security
+
+- **HTTP security headers** in `next.config.ts`: a Content-Security-Policy plus HSTS,
+  `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, and
+  `Permissions-Policy`. `'unsafe-eval'` is dev-only (HMR); production omits it. **Update the CSP**
+  if you add a CDN, analytics, or other third-party origin.
+- Places API key is **server-only**; JSON-LD output is escaped against `</script>` injection;
+  external links use `rel="noopener noreferrer"`.
+
 ## Deploy (Vercel)
 
 1. Import the repo into Vercel.

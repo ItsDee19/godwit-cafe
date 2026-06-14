@@ -30,7 +30,7 @@ export function Loader() {
           sessionStorage.setItem("godwit-loaded", "1");
         } catch {}
       },
-      reduce ? 200 : 1500,
+      reduce ? 120 : 700,
     );
     return () => clearTimeout(t);
   }, []);
@@ -59,14 +59,14 @@ export function Loader() {
                 d="M6 40 C 28 10, 42 12, 50 30 C 58 12, 72 10, 94 40"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1, ease: easeGodwit }}
+                transition={{ duration: 0.55, ease: easeGodwit }}
               />
             </motion.svg>
             <motion.span
               className="font-display text-2xl font-semibold tracking-tight text-ink"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6, ease: easeGodwit }}
+              transition={{ delay: 0.28, duration: 0.4, ease: easeGodwit }}
             >
               Godwit
             </motion.span>

@@ -40,7 +40,21 @@ export function HeroExperience() {
   const [phase, setPhase] = useState<0 | 1>(0);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  // Defer the heavy WebGL canvas to idle time — the page becomes interactive
+  // fast and the static fallback donut shows instantly meanwhile.
+  useEffect(() => {
+    type IdleWin = Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const w = window as IdleWin;
+    if (w.requestIdleCallback) {
+      const id = w.requestIdleCallback(() => setMounted(true), { timeout: 1200 });
+      return () => w.cancelIdleCallback?.(id);
+    }
+    const t = setTimeout(() => setMounted(true), 200);
+    return () => clearTimeout(t);
+  }, []);
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 768px), (pointer: coarse)");
     const set = () => setQuality(mq.matches ? "low" : "high");
@@ -57,7 +71,7 @@ export function HeroExperience() {
     const total = sec.offsetHeight - window.innerHeight;
     const p = total > 0 ? clamp(-sec.getBoundingClientRect().top / total, 0, 1) : 0;
     progressRef.current = p;
-    const nextPhase: 0 | 1 = p < 0.45 ? 0 : 1;
+    const nextPhase: 0 | 1 = p < 0.42 ? 0 : 1;
     setPhase((cur) => (cur === nextPhase ? cur : nextPhase));
     setScrolled((cur) => {
       const next = p > 0.05;
@@ -68,7 +82,7 @@ export function HeroExperience() {
   const showCanvas = mounted && webgl === true && !reduced;
 
   return (
-    <section ref={sectionRef} className="relative h-[300vh]">
+    <section ref={sectionRef} className="relative h-[160vh]">
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
         {/* backdrop — warms at the top, lightens as you scroll */}
         <div

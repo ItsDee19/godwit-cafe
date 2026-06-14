@@ -82,10 +82,12 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
         ref={lenisRef}
         autoRaf={false}
         options={{
-          lerp: 0.1,
+          // Snappier than the default — tracks the wheel closely so the page
+          // never feels "stuck" behind heavy smoothing.
+          lerp: 0.14,
           smoothWheel: true,
-          wheelMultiplier: 1,
-          touchMultiplier: 1.5,
+          wheelMultiplier: 1.2,
+          touchMultiplier: 1.6,
           // Native touch scrolling on mobile — never fights vertical scroll.
           syncTouch: false,
         }}
