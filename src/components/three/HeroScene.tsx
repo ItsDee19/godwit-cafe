@@ -69,11 +69,11 @@ export function HeroScene({
       />
 
       <ContactShadows
-        position={[0, -1.55, 0]}
-        opacity={0.42}
-        scale={11}
-        blur={2.8}
-        far={3.2}
+        position={[0, -0.75, 0]}
+        opacity={0.35}
+        scale={9}
+        blur={3.2}
+        far={3}
         resolution={quality === "high" ? 512 : 256}
         color="#2a1d14"
       />

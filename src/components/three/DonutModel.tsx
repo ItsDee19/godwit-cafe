@@ -171,14 +171,15 @@ function DonutRig({
     const compact = size.width < 760;
 
     // --- scroll choreography (travel + rotate + scale) ---
-    // gentle constant spin + scroll-driven tilt; travels across 3 beats
+    // The donut lives in the UPPER area so the copy band below stays clear;
+    // it drifts further up and shrinks as the user scrolls into beat 2.
     const targetRotY = p * Math.PI * 2.2 + (ds ? ds.angle : 0);
-    const targetRotX = -0.5 + Math.sin(p * Math.PI) * 0.25;
-    const travelX = Math.sin(p * Math.PI * 2) * (compact ? 0.5 : 0.9); // drift
+    const targetRotX = -0.5 + Math.sin(p * Math.PI) * 0.22;
+    const travelX = Math.sin(p * Math.PI * 2) * (compact ? 0.25 : 0.45);
     const travelY =
-      (compact ? 0.7 : 0.25) + Math.sin(p * Math.PI) * 0.35 - p * 0.4;
+      (compact ? 1.05 : 0.9) + Math.sin(p * Math.PI) * 0.28 - p * 0.5;
     const scale =
-      (1 + Math.sin(p * Math.PI) * 0.12 - p * 0.15) * (compact ? 0.74 : 0.94);
+      (1 + Math.sin(p * Math.PI) * 0.1 - p * 0.12) * (compact ? 0.62 : 0.78);
 
     // pointer parallax (subtle)
     const px = pointer.x * 0.15;
