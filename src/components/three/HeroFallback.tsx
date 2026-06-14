@@ -43,10 +43,12 @@ export function HeroFallback({ colors }: { colors: DonutColors }) {
   }, [colors]);
 
   return (
-    <div className="absolute inset-0 grid place-items-center">
+    // Upper-area placement mirrors the lifted WebGL donut so the copy band
+    // below stays clear on every screen size.
+    <div className="absolute inset-x-0 top-0 flex h-[60%] items-center justify-center px-6">
       <svg
         viewBox="0 0 200 200"
-        className="h-[min(60vmin,420px)] w-[min(60vmin,420px)] drop-shadow-[0_30px_40px_rgba(42,29,20,0.25)]"
+        className="h-[min(46vmin,360px)] w-[min(46vmin,360px)] drop-shadow-[0_30px_40px_rgba(42,29,20,0.25)]"
         role="img"
         aria-label="A glazed donut with colourful sprinkles"
       >

@@ -167,19 +167,39 @@ function DonutRig({
       return;
     }
 
-    // narrow/portrait viewports: shrink + lift so the headline has room
-    const compact = size.width < 760;
+    // Responsive placement — pick a size tier from the live canvas width,
+    // then shrink + lift further on short viewports so the copy always has
+    // room. The donut sits in the UPPER area and drifts further up + shrinks
+    // as the user scrolls into beat 2.
+    const w = size.width;
+    const h = size.height;
+    let base: number; // base scale
+    let lift: number; // base Y in world units (up)
+    let driftAmp: number; // horizontal travel amplitude
+    if (w < 380) {
+      base = 0.46; lift = 1.25; driftAmp = 0.14; // very small phones
+    } else if (w < 480) {
+      base = 0.52; lift = 1.18; driftAmp = 0.18; // small phones
+    } else if (w < 768) {
+      base = 0.6; lift = 1.08; driftAmp = 0.26; // large phones
+    } else if (w < 1100) {
+      base = 0.72; lift = 0.96; driftAmp = 0.4; // tablet
+    } else if (w < 1600) {
+      base = 0.82; lift = 0.9; driftAmp = 0.52; // desktop
+    } else {
+      base = 0.88; lift = 0.9; driftAmp = 0.66; // ultra-wide
+    }
+    if (h < 700) {
+      base *= 0.85; // short viewports (laptops, landscape phones)
+      lift += 0.2;
+    }
 
     // --- scroll choreography (travel + rotate + scale) ---
-    // The donut lives in the UPPER area so the copy band below stays clear;
-    // it drifts further up and shrinks as the user scrolls into beat 2.
     const targetRotY = p * Math.PI * 2.2 + (ds ? ds.angle : 0);
     const targetRotX = -0.5 + Math.sin(p * Math.PI) * 0.22;
-    const travelX = Math.sin(p * Math.PI * 2) * (compact ? 0.25 : 0.45);
-    const travelY =
-      (compact ? 1.05 : 0.9) + Math.sin(p * Math.PI) * 0.28 - p * 0.5;
-    const scale =
-      (1 + Math.sin(p * Math.PI) * 0.1 - p * 0.12) * (compact ? 0.62 : 0.78);
+    const travelX = Math.sin(p * Math.PI * 2) * driftAmp;
+    const travelY = lift + Math.sin(p * Math.PI) * 0.26 - p * 0.5;
+    const scale = base * (1 + Math.sin(p * Math.PI) * 0.09 - p * 0.11);
 
     // pointer parallax (subtle)
     const px = pointer.x * 0.15;
