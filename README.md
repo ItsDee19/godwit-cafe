@@ -87,6 +87,29 @@ src/
 public/           images/ · models/ · og/ · brand/
 ```
 
+## Reviews API
+
+- Outlet pages fetch live data server-side (`getPlaceData`, ISR 1h) — the key never reaches the
+  client (verified: `GOOGLE_PLACES_API_KEY` is absent from the client bundle).
+- A proxy endpoint is also available for client use: `GET /api/reviews/[outlet]` →
+  `{ rating, totalRatings, reviews, source: "live" | "fallback", ... }`.
+
+## Performance & accessibility
+
+- **3D is lazy** (`dynamic(ssr:false)`, Suspense), pixel ratio clamped to `[1,2]`, postprocessing
+  (bloom/DOF) only on desktop, `AdaptiveDpr` sheds quality under load.
+- Outlet pages are **prerendered static + ISR**; the home/menu are static. Fonts use `display:swap`.
+- **No-WebGL / reduced-motion** → static SVG hero; all motion respects `prefers-reduced-motion`.
+- **WCAG AA**: accent text uses an AA-safe shade (`--accent`) while fills keep the vivid
+  `--accent-bright`; skip-link, focus-visible rings, alt text, labelled controls.
+- Run Lighthouse against the Vercel preview for the live mobile score (target ≥ 85).
+
+## Deploy (Vercel)
+
+1. Import the repo into Vercel.
+2. Add env vars (`GOOGLE_PLACES_API_KEY`, `NEXT_PUBLIC_MAPS_EMBED_KEY`, `NEXT_PUBLIC_SITE_URL`).
+3. Deploy — ISR + route handlers work out of the box.
+
 ## Notes
 
 - The Google Places API returns a **maximum of 5 reviews** per place — the "Read all on Google"
