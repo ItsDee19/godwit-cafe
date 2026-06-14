@@ -65,6 +65,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // the inline theme script sets data-theme on <html> before hydration
+      suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">

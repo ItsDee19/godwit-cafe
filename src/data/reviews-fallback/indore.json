@@ -1,0 +1,37 @@
+{
+  "_note": "FALLBACK DATA — researched snapshot, not live. Replace at runtime via Google Places API (New) once GOOGLE_PLACES_API_KEY + place_id are set. See src/lib/places.ts.",
+  "rating": 4.5,
+  "totalRatings": 2143,
+  "reviews": [
+    {
+      "author": "Aarav Mehta",
+      "rating": 5,
+      "relativeTime": "2 weeks ago",
+      "text": "Hands down the best veg cafe in Indore. The vada pav fondue is genius and the Lotus Biscoff shake is unreal. Cosy, premium and never disappoints."
+    },
+    {
+      "author": "Sneha Kulkarni",
+      "rating": 5,
+      "relativeTime": "a month ago",
+      "text": "Open kitchen, gorgeous interiors and such warm staff. Came for a catch-up and stayed for hours. The sizzler was the highlight of the evening."
+    },
+    {
+      "author": "Rahul Verma",
+      "rating": 4,
+      "relativeTime": "a month ago",
+      "text": "Great ambiance and laptop-friendly during the day. Loaded pizza and malai broccoli tikka were excellent. Slightly busy on weekends but worth it."
+    },
+    {
+      "author": "Priya Nair",
+      "rating": 5,
+      "relativeTime": "2 months ago",
+      "text": "The flagship for a reason. Black rice khichdi and the blueberry cheesecake were beautifully done. Pure veg done with real finesse."
+    },
+    {
+      "author": "Karan Shah",
+      "rating": 4,
+      "relativeTime": "3 months ago",
+      "text": "Lovely place for couples and friends. Chaat platter is a fun twist on street food. Will definitely be back for the shakes."
+    }
+  ]
+}

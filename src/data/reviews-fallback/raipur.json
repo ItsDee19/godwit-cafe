@@ -1,0 +1,37 @@
+{
+  "_note": "FALLBACK DATA — researched snapshot, not live. Replace at runtime via Google Places API (New) once GOOGLE_PLACES_API_KEY + place_id are set. See src/lib/places.ts.",
+  "rating": 4.3,
+  "totalRatings": 1876,
+  "reviews": [
+    {
+      "author": "Ananya Sahu",
+      "rating": 5,
+      "relativeTime": "3 weeks ago",
+      "text": "Mesmerising ambiance inside Magneto Mall. The Mr. Mateos arancini and Burmese khow suey are must-tries. Staff happily suggested the right dishes."
+    },
+    {
+      "author": "Vikram Patel",
+      "rating": 4,
+      "relativeTime": "a month ago",
+      "text": "Spacious, family-friendly and great for a fusion dinner. KungFu rolls were delicious. A touch on the pricey side but the experience makes up for it."
+    },
+    {
+      "author": "Megha Agrawal",
+      "rating": 5,
+      "relativeTime": "a month ago",
+      "text": "Loved the mocktails — cranberry virgin sangria is so refreshing. Oriental and continental options are all pure veg, which is rare and wonderful."
+    },
+    {
+      "author": "Sahil Dewangan",
+      "rating": 4,
+      "relativeTime": "2 months ago",
+      "text": "Good portion sizes and a lovely setting for a weekend outing with family. Paneer tikka and hummus platter were both very good."
+    },
+    {
+      "author": "Ishita Rao",
+      "rating": 4,
+      "relativeTime": "3 months ago",
+      "text": "Came expecting Indore quality and mostly got it. Black rice was excellent. Service was prompt and friendly throughout."
+    }
+  ]
+}
